@@ -1,0 +1,25 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="02" author="Kirill Kiryukhin">
+        <insert tableName="employees">
+            <column name="id" valueNumeric="1" />
+            <column name="first_name" value="Max" />
+            <column name="last_name" value="Musterman" />
+            <column name="email_address" value="MaxMusterman@gmail.com" />
+            <column name="field_id" value="1"/>
+        </insert>
+
+        <insert tableName="employees">
+            <column name="id" valueNumeric="2" />
+            <column name="first_name" value="Ralf"/>
+            <column name="last_name" value="Steinmeier"/>
+            <column name="email_address" value="steinmeierRalf@gmail.com"/>
+            <column name="field_id" value="1"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

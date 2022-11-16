@@ -1,0 +1,27 @@
+server:
+  port:
+    9090
+
+spring:
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost;databaseName=employees;encrypt=true;trustServerCertificate=true;
+    username: sa
+    password: Intershop0!
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        # The SQL dialect makes Hibernate generate better SQL for the chosen database
+        dialect: org.hibernate.dialect.SQLServer2012Dialect
+    show-sql: true
+    hibernate:
+      # Hibernate ddl auto (create, create-drop, validate, update)
+      ddl-auto: validate
+  liquibase:
+    change-log: classpath:db/db.changelog-master.xml
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace

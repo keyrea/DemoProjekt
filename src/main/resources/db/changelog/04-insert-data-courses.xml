@@ -1,0 +1,20 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="04" author="Kirill Kiryukhin">
+        <insert tableName="courses">
+            <column name="id" valueNumeric="1" />
+            <column name="name" value="Schlüsselqualifikationen: Rhetorik"/>
+        </insert>
+
+        <insert tableName="courses">
+            <column name="id" valueNumeric="2" />
+            <column name="name" value="Schlüsselqualifikationen: Ethiket und Höflichkeit"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

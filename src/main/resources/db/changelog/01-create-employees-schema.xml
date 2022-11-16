@@ -1,0 +1,66 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Kirill Kiryukhin" id="01">
+        <createTable remarks="Used to store employee's information"
+                     tableName="employees">
+            <column name="id" type="numeric(19,0)">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="first_name" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_name" type="varchar(50)">
+                    <constraints nullable="false" />
+            </column>
+            <column name="email_address" type="varchar(100)">
+                    <constraints nullable="false" />
+            </column>
+            <column name="field_id" type="numeric(19,0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="fields">
+            <column name="id" type="numeric(19,0)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type = "varchar(100)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="employees" baseColumnNames="field_id" constraintName="field_fk"
+                                     referencedTableName="fields" referencedColumnNames="id"/>
+        
+        <createTable tableName="courses">
+            <column name="id" type="numeric(19,0)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <createTable tableName="employees2courses">
+            <column name="id" type="numeric(19,0)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="employee_id" type="numeric(19,0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="course_id" type="numeric(19,0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <addForeignKeyConstraint baseTableName="employees2courses" baseColumnNames="employee_id" constraintName="employee_fk"
+                                 referencedTableName="employees" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="employees2courses" baseColumnNames="course_id" constraintName="course_fk"
+                                 referencedTableName="courses" referencedColumnNames="id"/>
+
+    </changeSet>
+</databaseChangeLog>
